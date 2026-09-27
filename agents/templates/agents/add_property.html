@@ -1,0 +1,64 @@
+{% extends 'properties/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-4">Add New Property</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                {% render_field form.title class="form-control" placeholder="3 Bedroom Duplex in PH" %}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                {% render_field form.description class="form-control" rows="4" %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Price ₦</label>
+                    {% render_field form.price class="form-control" %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Property Type</label>
+                    {% render_field form.property_type class="form-select" %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">State</label>
+                    {% render_field form.state class="form-control" %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">City</label>
+                    {% render_field form.city class="form-control" %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Bedrooms</label>
+                    {% render_field form.bedrooms class="form-control" %}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Bathrooms</label>
+                    {% render_field form.bathrooms class="form-control" %}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Upload Image</label>
+                {% render_field form.image class="form-control" %}
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Post Property</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
