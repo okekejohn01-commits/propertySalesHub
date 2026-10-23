@@ -1,0 +1,46 @@
+{% extends 'properties/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h2 class="mb-4 text-center">Become an Agent</h2>
+        <form method="post">
+          {% csrf_token %}
+          
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            {% render_field form.username class="form-control" %}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            {% render_field form.email class="form-control" %}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">WhatsApp Number</label>
+            {% render_field form.phone class="form-control" placeholder="08012345678" %}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            {% render_field form.password1 class="form-control" %}
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+            {% render_field form.password2 class="form-control" %}
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+        <p class="text-center mt-3">Already an agent? <a href="{% url 'login' %}">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
