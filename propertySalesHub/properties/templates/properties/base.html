@@ -8,32 +8,38 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">propertySalesHub</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="btn btn-outline-success me-2" href="{% url 'agent_dashboard' %}">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="{% url 'logout' %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-danger">Logout</button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="btn btn-outline-primary me-2" href="{% url 'signup' %}">Become an Agent</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{% url 'login' %}">Agent Login</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <div class="container">
+    <a class="navbar-brand" href="/">propertySalesHub</a>
+
+    <!-- THIS BUTTON WAS MISSING! -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="btn btn-outline-success me-2" href="{% url 'agent_dashboard' %}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-outline-primary me-2" href="{% url 'signup' %}">Become an Agent</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="{% url 'login' %}">Agent Login</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <div class="container mt-4">
         {% block content %}{% endblock %}
